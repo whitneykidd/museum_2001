@@ -10,6 +10,10 @@ class Museum
     @exhibits << exhibit
   end
 
+  def admit(patron)
+    @patrons << patron
+  end  
+
   def recommend_exhibits(patron)
     exhibits.find_all do |exhibit|
       if patron.interests.include?(exhibit.name) == true
