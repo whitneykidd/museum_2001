@@ -27,4 +27,12 @@ class Museum
      patron.interests.include?(exhibit.name)
     end
   end
+
+  def patrons_by_exhibit_interest
+    patrons_by_exhibit_interest = {}
+    exhibits.each do |exhibit|
+      patrons_by_exhibit_interest[exhibit] = patron_interests(exhibit)
+    end
+  patrons_by_exhibit_interest
+  end
 end
