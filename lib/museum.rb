@@ -16,7 +16,7 @@ class Museum
 
   def recommend_exhibits(patron)
     exhibits.find_all do |exhibit|
-      if patron.interests.include?(exhibit.name) == true
+      if patron.interests.include?(exhibit.name)
         exhibits
       end
     end
