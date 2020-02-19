@@ -55,6 +55,15 @@ class MuseumTest < Minitest::Test
     assert_equal [@patron_1, @patron_2, @patron_3], @dmns.patrons
   end
 
+  def test_it_can_return_patron_interests
+    @patron_1.add_interest("Dead Sea Scrolls")
+    @patron_2.add_interest("Dead Sea Scrolls")
+
+    @dmns.admit(@patron_1)
+    @dmns.admit(@patron_2)
+    assert_equal [@patron_1, @patron_2], @dmns.patron_interests(@dead_sea_scrolls)
+  end
+
   def test_it_can_return_patrons_by_exhibit_interest
     @dmns.add_exhibit(@gems_and_minerals)
     @dmns.add_exhibit(@dead_sea_scrolls)
@@ -66,8 +75,8 @@ class MuseumTest < Minitest::Test
     @patron_3.add_interest("Dead Sea Scrolls")
 
     @dmns.admit(@patron_1)
-    @dmns.admit(@patron_1)
-    @dmns.admit(@patron_1)
+    @dmns.admit(@patron_2)
+    @dmns.admit(@patron_3)
 
     expected = {
       @gems_and_minerals => [@patron_1],
